@@ -53,10 +53,10 @@ export const features = [
 ] as const;
 
 export const stats = [
-  { value: 4800, suffix: "+", label: "Followers" },
-  { value: 550000, suffix: "+", label: "Likes" },
-  { value: null, label: "Total Views", display: "Millions" },
-  { value: 1, label: "Original Song" },
+  { value: 5300, suffix: "+", label: "Followers" },
+  { value: 685000, suffix: "+", label: "Likes" },
+  { value: null, label: "Total Views", display: "Tens of Millions" },
+  { value: 7, label: "Original Releases" },
 ];
 
 /**
@@ -79,11 +79,11 @@ export const featuredPerformances = [
     embedUrl: "https://www.youtube.com/embed/a-3kHOri31g?si=4gTe1SxVd8eA8ff_",
   },
   {
-    title: "Mulaquatein",
-    artist: "Rage The Rapper",
-    note: "AMV",
+    title: "Am I Really Getting Old?",
+    artist: "VoxPRV",
+    note: "Original",
     platform: "YouTube" as const,
-    embedUrl: "https://www.youtube.com/embed/FQj3CGJr6GU?si=0hxMPFW73V-ombda",
+    embedUrl: "https://www.youtube.com/embed/gOtKazCyhto?si=TRf48NNWtxd-BjUV",
   },
 ];
 
@@ -121,11 +121,11 @@ export const originalSong = {
 
 export const upcomingEP = {
   title: "Almost Us",
-  subtitle: "Coming Soon",
   // Real EP artwork (public/images/ep-artwork.jpg)
   artwork: "/images/ep-artwork.jpg",
-  // Release countdown target — currently ~126 days out
-  releaseDate: new Date("2026-12-30T00:00:00"),
+  spotifyAlbumUrl: "https://open.spotify.com/album/0uHyFynFtjWkyNQNnLNoOU?si=ZCj4w2BCTLmnNgL55c7aFw",
+  appleMusicAlbumUrl: "https://music.apple.com/us/album/almost-us-ep/6816940489",
+  youtubeArtistUrl: "https://www.youtube.com/@voxprv",
   /** Debut EP tracklist — durations are placeholders, edit freely */
   tracklist: [
     { no: "01", title: "A Dream That Looked Like You", duration: "5:05" },
@@ -135,6 +135,32 @@ export const upcomingEP = {
   ],
 };
 
+export const releasedSingles = [
+  {
+    title: "Wanna Do It",
+    artwork: "/images/Wanna Do It.jpg",
+    year: "2026",
+    spotifyUrl: "https://open.spotify.com/album/5wkISpZZQ5j0ULxrF1WauF?si=eEwcVFDpQ_uV5BEfKyuExw",
+    appleMusicUrl: "https://music.apple.com/us/album/wanna-do-it-single/6827590225",
+  },
+  {
+    title: "Destiny Of Us",
+    artwork: "/images/Destiny Of Us.jpg",
+    year: "2026",
+    spotifyUrl: "https://open.spotify.com/album/0p1XdBeYfPIZ5jUuhqohsz?si=-wuLAIDTRyeH5B9CwzqHeA",
+    appleMusicUrl: "https://music.apple.com/us/album/destiny-of-us-single/6828827885",
+  },
+] as const;
+
+export const upcomingMusic = [
+  { title: "Pretty Nerdy", artwork: "/images/Pretty_Nerdy.png" },
+  { title: "Am I Too Sensitive?", artwork: "/images/Sensitive.jpg" },
+  { title: "What is Autism?", artwork: "/images/Autism.jpg" },
+  { title: "I Wanna Fall In Love Too", artwork: "/images/Love.jpg" },
+  { title: "Why Is The Count One More?", artwork: "/images/OneMore.jpg" },
+  { title: "Stuck on Replay", artwork: "/images/Stuck_On_Replay.jpg" },
+] as const;
+
 export const timeline = [
   { year: "2025 April", title: "Started Posting Covers", text: "First covers uploaded to TikTok — a voice begins to find its audience." },
   { year: "2025 April", title: "First Long-Form & AMV Releases", text: "Full-length covers and anime music video edits arrive on YouTube." },
@@ -142,7 +168,7 @@ export const timeline = [
   { year: "2026 February", title: "100K Total Likes", text: "The community grows past one hundred thousand hearts" },
   { year: "2026 March", title: "14 Languages Milestone", text: "Covers now span English, Nepali, Hindi, Japanese, Russian and beyond." },
   { year: "2026 July", title: "Original Release", text: `"${originalSong.title}" marks the first step beyond covers.` },
-  { year: "2026 August", title: "Almost Us Announced", text: "The debut EP is on the horizon." },
+  { year: "2026 August", title: "Almost Us Released", text: "The debut EP is now available to stream." },
 ];
 
 // ── Branding ─────────────────────────────────────────────────
@@ -160,8 +186,7 @@ export const streamingLinks = {
   spotify: "https://open.spotify.com/track/6blr5HpKyZVcBJGzuFj5ys",
   appleMusic: "https://music.apple.com/us/album/am-i-really-getting-old-single/6802412916",
   appleMusicArtistId: "6802412917", // Apple Music artist ID
-  // TODO: replace with the real video URL
-  youtube: "https://youtube.com/@voxprv",
+  youtube: "https://www.youtube.com/watch?v=gOtKazCyhto",
 };
 
 // TODO: Wire the contact form to Formspree or Resend.

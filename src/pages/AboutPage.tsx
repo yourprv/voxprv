@@ -20,7 +20,7 @@ export default function AboutPage() {
       <CraftSection />
 
       {/* Philosophy quote banner */}
-      <section className="relative overflow-hidden py-24">
+      <section className="relative isolate overflow-hidden py-24">
         <div aria-hidden className="absolute inset-4 -z-10 rounded-[3rem] bg-gradient-to-br from-royal-900 via-[#1c2150] to-violet-glow/50 shadow-[0_80px_160px_-60px_rgba(35,48,164,0.8)]" />
         <div aria-hidden className="pointer-events-none absolute left-[12%] top-[25%] -z-10 h-64 w-64 rounded-full bg-royal-500/30 blur-[100px] animate-float-slow" />
         <div aria-hidden className="pointer-events-none absolute bottom-[15%] right-[10%] -z-10 h-64 w-64 rounded-full bg-violet-glow/30 blur-[100px] animate-float-med" />
@@ -74,7 +74,7 @@ export default function AboutPage() {
               { k: "Every video edited", v: "in-house", d: "From color grade to cut — no templates." },
               { k: "Community-driven", v: "setlists", d: "Followers vote on what gets covered next." },
               { k: "Native-language", v: "care", d: "Meaning checked before recording, always." },
-              { k: "One original,", v: "more coming", d: `"Almost Us" is only the beginning.` },
+              { k: "Three original", v: "singles released", d: `"Am I Really Getting Old?", "Wanna Do It", and "Destiny Of Us".` },
             ].map((card) => (
               <motion.div key={card.k} variants={staggerChild} className="rounded-3xl border border-white/70 bg-white/70 p-6 shadow-[0_18px_50px_-24px_rgba(35,48,164,0.3)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-1">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-royal-500">{card.k}</p>

@@ -1,117 +1,74 @@
-# VoxPRV — Official Portfolio
+# VoxPRV Artist Website
 
-A premium, cinematic portfolio website for cover artist **VoxPRV** (*Covers That Hit Unexpectedly*).
+The official portfolio website for **VoxPRV**, a Nepali singer and cover artist. It brings together performances, original releases, upcoming music, artist information, and contact links in a responsive single-page app.
 
-Built with **React 19 · Vite · TypeScript · Tailwind CSS · Framer Motion · Lucide Icons**.
-Licensed under the [MIT License](LICENSE) — free to use, modify and redistribute.
-© 2026 **yourprv**
+## Built with
 
-## Quick Start
+- React 19 and TypeScript
+- Vite 5
+- Tailwind CSS 3
+- Framer Motion
+- React Router
+- Lucide React icons
+
+## Run locally
+
+Requirements: Node.js 18 or newer and npm.
 
 ```bash
-npm install
-npm run dev      # local development (http://localhost:5173)
-npm run build    # production build → dist/
-npm run preview  # preview the production build
+npm ci
+npm run dev
 ```
 
-> Requires Node.js 18+.
+Vite prints the local development URL after startup. Other available commands:
 
-## Pages
-
-| Route      | Page                                                                 |
-| ---------- | -------------------------------------------------------------------- |
-| `/`        | Home — hero, features, stats, **featured performances (live embeds)**, more-covers links, original music, EP (countdown + tracklist), journey timeline, request CTA, socials |
-| `/about`   | About — story, signature features (long-form covers, AMVs, multilingual), the craft, philosophy, stats |
-| `/music`   | "Am I Really Getting Old?" original single with streaming buttons     |
-| `/ep`      | "Almost Us" EP — artwork reveal, live countdown, 4-song tracklist     |
-| `/journey` | Animated milestone timeline                                           |
-| `/contact` | Contact form                                                          |
-| `/request` | Special Requests — song cover requests & collab requests              |
-
-Unknown routes fall back to the homepage.
-
-## Editing Content — One File Only
-
-Everything editable lives in **`src/lib/site.ts`**:
-
-| What                                   | Where in `site.ts`        |
-| -------------------------------------- | ------------------------- |
-| Artist name, roles, tagline            | `site`                    |
-| Logo image path                        | `logo`                    |
-| Bio text + portrait path               | `about`                   |
-| Languages covered                      | `languages[]`             |
-| Signature features                     | `features[]`              |
-| The Craft steps                        | `craft[]`                 |
-| Stats                                  | `stats`                   |
-| Homepage embedded performances         | `featuredPerformances[]`  |
-| Original song info + streaming links   | `originalSong`, `streamingLinks` |
-| EP title, release date, tracklist      | `upcomingEP`              |
-| Timeline milestones                    | `timeline[]`              |
-| Social links                           | `socials`                 |
-| Contact endpoint                       | `contactFormEndpoint`     |
-| Request-form endpoint                  | `requestFormEndpoint`     |
-
-## Replacing Images
-
-All images live in `public/images/`:
-
-```
-public/images/
-├── voxprv.jpeg               → brand mark (header logo, favicon, portrait)
-├── original-artwork.jpg      → "Am I Really Getting Old?" single artwork
-├── ep-artwork.jpg            → "Almost Us" EP artwork
-└── covers/cover1.svg …       → spare placeholder thumbnails
+```bash
+npm run build    # type-check and create the production build in dist/
+npm run preview  # serve the production build locally
 ```
 
-Paths are referenced in `src/lib/site.ts` (`logo`, `about.portrait`,
-`originalSong.artwork`, `upcomingEP.artwork`) and `index.html` (favicon).
+## Site pages
 
-## TODO Before Launch
+| Path | Content |
+| --- | --- |
+| `/` | Artist introduction, featured performances, music, upcoming releases, journey, and social links |
+| `/about` | Artist story, creative process, milestones, and social links |
+| `/music` | Original single, released singles, and upcoming music |
+| `/ep` | *Almost Us* EP artwork, tracklist, and streaming destinations |
+| `/journey` | Artist milestones |
+| `/contact` | Contact form |
+| `/request` | Song request and collaboration form |
 
-- [ ] Set the real YouTube video URL in `streamingLinks.youtube`
-- [ ] Set the real EP release date in `upcomingEP.releaseDate`
-- [ ] Wire the contact form to Formspree/Resend (`contactFormEndpoint`,
-      see the TODO block in `src/components/Contact.tsx`)
-- [ ] Wire the request form to Formspree/Resend (`requestFormEndpoint`,
-      see the TODO block in `src/components/RequestForm.tsx`)
-- [ ] Optionally connect the "Notify Me" button to an email capture service
-- [ ] Add per-track streaming URLs to `upcomingEP.tracklist` when released
+The app uses React Router's `BrowserRouter`. Static hosts must send unknown paths to `index.html` so direct visits to these routes work. The Vite base path is set to `./` in `vite.config.ts` for relative asset URLs.
 
-## Structure
+## Update site content
 
-```
-src/
-├── lib/
-│   ├── site.ts        # ← all content, links, languages & embeds
-│   └── motion.ts      # shared spring physics & animation variants
-├── components/
-│   ├── ui/            # MagneticButton, GlassCard, AnimatedCounter,
-│   │                  # SectionTitle, BackgroundGlow, NoiseTexture,
-│   │                  # ErrorBoundary
-│   ├── Navbar, Footer, Hero, About, Stats, OriginalMusic,
-│   │   UpcomingEP, Timeline, Socials, Contact
-│   ├── FeaturedPerformances.tsx   # YouTube embeds on the homepage
-│   ├── FeatureCards.tsx           # Long-Form • AMVs • Multilingual
-│   ├── CraftSection.tsx           # 4-step creative process
-│   └── MoreCovers.tsx             # social-handles card
-├── pages/             # HomePage, AboutPage, MusicPage, EPPage,
-│                      # JourneyPage, ContactPage, RequestPage
-└── App.tsx / main.tsx # routing (react-router) + error boundary
-```
+Most site copy, artwork paths, statistics, links, and release information live in [`src/lib/site.ts`](src/lib/site.ts):
 
-## Deployment Notes
+- `site`, `about`, `languages`, `features`, and `craft` — artist profile and copy
+- `stats` — follower, like, view, and release figures
+- `featuredPerformances` — embedded YouTube videos
+- `originalSong`, `streamingLinks`, `releasedSingles`, `upcomingMusic`, and `upcomingEP` — music and artwork
+- `timeline` — journey milestones
+- `socials` — social profile links
 
-- Client-side routing uses `BrowserRouter`. Vercel, Netlify and Cloudflare
-  Pages work out of the box. For plain static hosting, rewrite all paths to
-  `index.html`, or swap `BrowserRouter` → `HashRouter` in `src/App.tsx`.
-- `base: "./"` is set in `vite.config.ts`, so the build works from any
-  host or subfolder.
+The page components render this data. For example, upcoming single cards are in `src/components/UpcomingMusic.tsx`, and reusable platform links are in `src/components/StreamingLinks.tsx`.
 
-## Quality
+### Artwork and media
 
-- Animations use spring physics and respect `prefers-reduced-motion`
-- Images are lazy-loaded; sections animate only while visible
-- Fully responsive: mobile drawer nav, tablet grids, ultrawide max-width
-- Semantic HTML, keyboard focus styles, accessible contrast
-# voxprv
+Put public images in `public/images/` and reference them from `src/lib/site.ts` with paths beginning `/images/`. Current release artwork includes:
+
+- `original-artwork.jpg` — “Am I Really Getting Old?”
+- `Wanna Do It.jpg` and `Destiny Of Us.jpg` — released singles
+- `ep-artwork.jpg` — *Almost Us*
+- `Pretty_Nerdy.png`, `Sensitive.jpg`, `Autism.jpg`, `Love.jpg`, `OneMore.jpg`, and `Stuck_On_Replay.jpg` — upcoming music
+
+The brand image is `voxprv.jpeg`; the favicon is configured in `index.html`.
+
+## Forms and external services
+
+The contact and request forms currently show a client-side confirmation only; they do not send or store submissions. Connect a form service or backend in `src/components/Contact.tsx` and `src/components/RequestForm.tsx` before using them to receive messages. Video embeds, streaming buttons, and social links open third-party services.
+
+## License
+
+The source code is provided under the MIT License; see [`LICENSE`](LICENSE). Artwork, logos, photographs, music, video, and other media are excluded from that license and remain with their respective rights holders.

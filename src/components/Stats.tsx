@@ -27,7 +27,9 @@ export default function Stats() {
                 <Icon className="h-5 w-5" />
               </span>
               <div>
-                <p className="text-4xl font-bold tracking-tight text-charcoal sm:text-5xl">
+                <p className={s.display
+                  ? "stat-long-value font-bold text-charcoal"
+                  : "text-4xl font-bold tracking-tight text-charcoal sm:text-5xl"}>
                   {s.display !== undefined ? (
                     s.display
                   ) : (

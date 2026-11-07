@@ -6,13 +6,15 @@ import FeaturedPerformances from "../components/FeaturedPerformances";
 import MoreCovers from "../components/MoreCovers";
 import OriginalMusic from "../components/OriginalMusic";
 import UpcomingEP from "../components/UpcomingEP";
+import ReleasedSingles from "../components/ReleasedSingles";
+import UpcomingMusic from "../components/UpcomingMusic";
 import Timeline from "../components/Timeline";
 import MagneticButton from "../components/ui/MagneticButton";
 
 /**
  * Full-length homepage:
  * hero → features → stats → featured performances (live embeds)
- * → more-covers social links → original music → EP (timer + tracklist)
+ * → more-covers social links → original music → EP (Spotify link + tracklist)
  * → journey timeline → request CTA → socials.
  */
 export default function HomePage() {
@@ -26,10 +28,12 @@ export default function HomePage() {
 
       <OriginalMusic />
       <UpcomingEP />
+      <ReleasedSingles />
+      <UpcomingMusic />
       <Timeline />
 
       {/* Request CTA banner */}
-      <section className="relative overflow-hidden py-20">
+      <section className="relative isolate overflow-hidden py-20">
         <div aria-hidden className="absolute inset-4 -z-10 rounded-[3rem] bg-gradient-to-r from-royal-600 via-indigo-glow to-violet-glow shadow-[0_60px_120px_-50px_rgba(53,71,240,0.7)] sm:inset-x-8" />
         <div className="mx-auto max-w-3xl px-8 py-10 text-center text-white">
           <h2 className="font-display text-4xl italic leading-tight sm:text-5xl">Want to hear your favorite song?</h2>

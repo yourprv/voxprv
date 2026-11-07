@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import { Play } from "lucide-react";
-import MagneticButton from "./ui/MagneticButton";
+import StreamingLinks from "./StreamingLinks";
 import { originalSong, streamingLinks, site } from "../lib/site";
 import { fadeUp, staggerContainer, staggerChild, viewportOnce } from "../lib/motion";
 
@@ -34,10 +33,6 @@ export default function OriginalMusic() {
                 className="h-full w-full object-cover"
               />
             </div>
-            <span className="absolute -right-4 top-8 flex h-20 w-20 items-center justify-center rounded-full bg-white/85 shadow-xl backdrop-blur-xl sm:-right-8">
-              <Play className="ml-1 h-7 w-7 fill-royal-600 text-royal-600" />
-              <span className="sr-only">Play {originalSong.title}</span>
-            </span>
           </motion.div>
         </motion.div>
 
@@ -55,16 +50,12 @@ export default function OriginalMusic() {
           <motion.p variants={staggerChild} className="mt-6 max-w-lg text-lg leading-relaxed text-charcoal/60">
             {originalSong.description}
           </motion.p>
-          <motion.div variants={staggerChild} className="mt-10 flex flex-wrap gap-4">
-            <MagneticButton href={streamingLinks.spotify} ariaLabel={`Listen to ${originalSong.title} on Spotify`}>
-              Spotify
-            </MagneticButton>
-            <MagneticButton href={streamingLinks.appleMusic} variant="ghost" ariaLabel="Listen on Apple Music">
-              Apple Music
-            </MagneticButton>
-            <MagneticButton href={streamingLinks.youtube} variant="ghost" ariaLabel="Watch on YouTube">
-              YouTube
-            </MagneticButton>
+          <motion.div variants={staggerChild} className="mt-10">
+            <StreamingLinks links={[
+              { platform: "Spotify", href: streamingLinks.spotify, action: "Stream on", ariaLabel: `Listen to ${originalSong.title} on Spotify` },
+              { platform: "Apple Music", href: streamingLinks.appleMusic, action: "Listen on", ariaLabel: `Listen to ${originalSong.title} on Apple Music` },
+              { platform: "YouTube", href: streamingLinks.youtube, action: "Watch on", ariaLabel: `Watch ${originalSong.title} on YouTube` },
+            ]} />
           </motion.div>
           <motion.p variants={staggerChild} className="mt-8 text-sm text-charcoal/40">
             © {new Date().getFullYear()} {site.artistName}
